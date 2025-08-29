@@ -2,40 +2,45 @@ using UnityEngine;
 
 public class Interagir : MonoBehaviour
 {
-    public Transform itemHolder;
-    private GameObject currentItem;
-    private float pickupCooldown = 0f;
+    public float interactRange = 2f; // Distância máxima para interação
+    public LayerMask interactableLayer; // Layer dos objetos interagíveis
 
     void Update()
     {
-        if (pickupCooldown > 0)
-            pickupCooldown -= Time.deltaTime;
-
-        if (currentItem != null && Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            currentItem.transform.SetParent(null);
-            currentItem.transform.position = transform.position + new Vector3(1f, 0, 0);
-
-            Collider2D col = currentItem.GetComponent<Collider2D>();
-            if (col != null)
-                col.enabled = true;
-
-            currentItem = null;
-            pickupCooldown = 0.3f;
+            Interact();
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void Interact()
     {
-        if (pickupCooldown <= 0 && other.CompareTag("Item") && currentItem == null)
-        {
-            currentItem = other.gameObject;
-            currentItem.transform.SetParent(itemHolder);
-            currentItem.transform.localPosition = Vector3.zero;
+        // Detecta todos os objetos interagíveis dentro do raio
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, interactRange, interactableLayer);
 
-            Collider2D col = currentItem.GetComponent<Collider2D>();
-            if (col != null)
-                col.enabled = false;
+        foreach (Collider2D hit in hits)
+        {
+            // Procura a interface IInteractable no objeto
+            IInteractable interactable = hit.GetComponent<IInteractable>();
+            if (interactable != null)
+            {
+                interactable.Interact(); // Chama a interação
+                break; // Interage com apenas um objeto por vez
+            }
         }
     }
+
+    // Mostra a área de interação no editor
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, interactRange);
+    }
+
+    public interface IInteractable
+    {
+        void Interact();
+    }
+
 }
+
