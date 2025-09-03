@@ -15,6 +15,7 @@ public class Interagir : MonoBehaviour
 
     void Interact()
     {
+
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, interactRange, interactableLayer);
 
         foreach (Collider2D hit in hits)
