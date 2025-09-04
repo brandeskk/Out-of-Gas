@@ -5,9 +5,9 @@ using TMPro;
 public class mainmenu : MonoBehaviour
 {
 
-    public void StartGame(string nomeCena)
+    public void StartGame(string JogoPrincipal)
     {
-        SceneManager.LoadScene(nomeCena);
+        SceneManager.LoadScene(JogoPrincipal);
     }
 
 
