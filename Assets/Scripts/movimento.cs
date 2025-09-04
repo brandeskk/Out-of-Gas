@@ -13,34 +13,33 @@ public class movimento : MonoBehaviour
     {
         Vector2 movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         MoveAnimationLogic(movement);
-
     }
 
     void MoveAnimationLogic(Vector2 moveSpeed)
     {
         if (moveSpeed.y < 0)
         {
-            animator.Play("replace");
+            animator.Play("idle");
             return;
         }
 
         if (moveSpeed.y > 0)
         {
-            animator.Play("replace");
+            animator.Play("walk right");
             return;
         }
 
         if (moveSpeed.x < 0)
         {
-            animator.Play("replace");
+            animator.Play("walk left");
             return;
         }
 
         if (moveSpeed.x > 0)
         {
-            animator.Play("replace");
+            animator.Play("walk right");
             return;
         }
-        animator.Play("replace");
+        animator.Play("idle");
     }
 }
