@@ -565,8 +565,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -271.1, y: 89}
-  m_SizeDelta: {x: 503.8, y: 143.71}
+  m_AnchoredPosition: {x: -159, y: 93}
+  m_SizeDelta: {x: 747.19, y: 284.62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &142802564
 MonoBehaviour:
@@ -588,7 +588,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Bot\xE3o esquerdo: coletar\n\nWASD: para andar"
+  m_text: "Bot\xE3o esquerdo: coletar as gasolinas\n\ntecla W: andar para cima\ntecla
+    D andar para direita\ntecla A: andar para esquerda\ntecla S: andar para baixo"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
